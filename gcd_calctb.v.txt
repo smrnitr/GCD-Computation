@@ -1,0 +1,21 @@
+module testbench;
+   reg start, clk;
+   reg [0:15] data_in;
+   reg [0:15] A, B;
+   wire done;
+   gcd_calcdp DP(gt,lt,eq,LdA,LdB,sel_1,sel_2,sel_in,data_in,clk);
+   gcd_calccp CP(LdA,LdB,sel_1,sel_2,sel_in,data_in,done,clk,lt,gt,eq,start);
+   initial 
+      begin clk=1'b0; #3 start=1'b1; #1000 $finish;  end
+   always #5 clk=~clk;
+   initial
+      begin #12 data_in=143; #10 data_in=78; end
+   
+   initial
+      begin
+         $monitor($time, "%d %b", DP.Aout, done);
+         $dumpfile("gcd_calc.vcd");
+         $dumpvars(0, testbench);
+      end
+endmodule
+        
