@@ -1,0 +1,6 @@
+module module_mux1gcd(Aout,Bout,sel_1,X);
+   input [0:15] Aout, Bout;
+   output [0:15] X;
+   input sel_1;
+   assign X=(sel_1)?Aout:Bout;
+endmodule

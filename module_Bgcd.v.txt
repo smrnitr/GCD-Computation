@@ -1,0 +1,9 @@
+//module_B
+
+module module_Bgcd(Bus,LdB,Bout,clk);
+   input [0:15] Bus;
+   output reg [0:15] Bout;
+   input clk, LdB;
+   always @(posedge clk)
+     if (LdB) Bout<=Bus;
+endmodule

@@ -1,0 +1,9 @@
+//module_A
+
+module module_Agcd(Bus,LdA,Aout,clk);
+   input [0:15] Bus;
+   output reg [0:15] Aout;
+   input clk, LdA;
+   always @(posedge clk)
+     if (LdA) Aout<=Bus;
+endmodule

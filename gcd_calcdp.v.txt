@@ -1,0 +1,25 @@
+//gcd calculation dp
+
+module gcd_calcdp(gt,lt,eq,LdA,LdB,sel_1,sel_2,sel_in,data_in,clk);
+  input [0:15] data_in;
+  input LdA, LdB, sel_1,sel_2,sel_in,clk;
+  output lt,gt,eq;
+  wire [0:15] Aout,Bout,X,Y,Subout, Bus;
+  module_gcd A(Aout,Bus,LdA,clk);
+  module_gcd B(Bout,Bus,LdB,clk);
+  module_muxgcd MUX1(X,Aout,Bout,sel_1);
+  module_muxgcd MUX2(Y,Aout,Bout,sel_2);
+  module_muxgcd MUX(Bus,Subout,data_in,sel_in);
+  module_subgcd SUB(Subout,X,Y);
+  module_compgcd COMP(lt,gt,eq,Aout,Bout);
+  
+  
+endmodule
+        
+     
+       
+        
+
+
+
+
